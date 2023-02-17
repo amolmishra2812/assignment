@@ -1,0 +1,71 @@
+package seleniumtest;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+int xcord=0;
+int ycord=0;
+public class casestudy {
+	public WebDriver driver;
+	@BeforeTest
+	public void BT()
+	{
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.navigate().to("http://www.trello.com");
+		
+	}
+
+@Test(priority = 0)
+	public void register() throws InterruptedException
+	{
+		driver.findElement(By.xpath("//*[@id="BXP-APP"]/header[1]/div/div[1]/div[2]/a[1]")).click();
+		Thread.sleep(3000);
+		//driver.findElement(By.xpath("//*[@id="googleButton"]/span[2]")).click();
+		driver.findElement(By.xpath("//*[@id="view_container"]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div/div/ul/li[3]/div/div[1]/div/div[2]/div[1]")).click;
+Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id="header"]/div[2]/div/div[2]/button/span/span")).click();
+	driver.findElement(By.xpath("/html/body/div[3]/div/section/div/div/nav/ul/li[1]/button/p")).click();
+		driver.findElement(By.xpath("/html/body/div[3]/div/section/div/form/div[1]/label/input")).sendKeys("demo");
+		driver.findElement(By.xpath(" /html/body/div[3]/div/section/div/form/button")).click();
+		driver.findElement(By.xpath("//*[@id="board"]/div/form/input")).sendKeys("A");
+		driver.findElement(By.xpath("//*[@id="board"]/div/form/div/input")).click();
+		driver.findElement(By.xpath(" //*[@id="board"]/div[2]/form/input")).sendKeys("B");
+driver.findElement(By.xpath("//*[@id="board"]/div[2]/form/div/input")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id="//*[@id="board"]/div[1]/div/div[3]/a")).click();
+driver.findElement(By.xpath("//*[@id="board"]/div[1]/div/div[2]/div/div[1]/div/textarea")).sendKeys("assignment");
+driver.findElement(By.xpath("//*[@id="board"]/div[1]/div/div[2]/div/div[2]/div[1]/input")).click();
+
+Actions actions = new Actions(driver);
+WebElement source = driver.findElementBy.xpath("//*[@id="board"]/div[1]/div/div[1]/div[1]"));
+WebElement target = driver.findElementBy.xpath("//*[@id="board"]/div[2]/div/div[1]/div[1]"));
+actions.dragAndDrop(source,target).perform();
+
+WebElement element = driver.findElement(By.xpath("//*[text()='assignment']"));
+Point point = element.getLocation();
+int xcord = point.getX();
+int ycord = point.getY();
+action.moveToElement(element, xcord, ycord).click().build().perform();
+
+driver.findElement(By.xpath("//*[@id="header"]/div[3]/div[2]/button/div/span")).click();
+driver.findElement(By.xpath("/html/body/div[3]/div/section/div/div/div/ul[3]/li[2]/button/span")).click();
+Thread.sleep(5000);
+driver.findElement(By.xpath("//*[@id="logout-submit"]/span")).click();
+
+
+
+	}
